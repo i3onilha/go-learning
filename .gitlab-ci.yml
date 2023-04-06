@@ -1,0 +1,15 @@
+stages:
+  - deploy
+deploy195:
+  stage: deploy
+  tags:
+    - bm2aps195
+  script:
+    - echo "Load before script"
+    - echo $(ip add | grep 10 | grep 64)
+    - source ~/.bashrc
+    - echo "Script integration running"
+    - cc
+    - echo "Finish Update Process for clear-cache on bm2aps195"
+  only:
+    - master
