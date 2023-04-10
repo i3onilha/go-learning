@@ -5,11 +5,14 @@ type ISportsFactory interface {
 	makeShirt(logo, size string) IShirt
 }
 
+var brands = map[string]ISportsFactory{
+	"adidas": &adidasFactory{},
+	"nike":   &nikeFactory{},
+}
+
 func GetSportsFactory(brand string) ISportsFactory {
-	if brand == "adidas" {
-		return &adidasFactory{}
-	} else if brand == "nike" {
-		return &nikeFactory{}
+	if brands[brand] == nil {
+		return nil
 	}
-	return nil
+	return brands[brand]
 }
