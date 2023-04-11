@@ -6,8 +6,8 @@ type ISportsFactory interface {
 }
 
 var brands = map[string]ISportsFactory{
-	"adidas": &adidasFactory{},
-	"nike":   &nikeFactory{},
+	"adidas": NewAdidasFactory(),
+	"nike":   NewNikeFactory(),
 }
 
 func GetSportsFactory(brand string) ISportsFactory {
