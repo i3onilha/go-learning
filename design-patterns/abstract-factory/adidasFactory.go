@@ -2,6 +2,10 @@ package abstractfactory
 
 type adidasFactory struct{}
 
+func NewAdidasFactory() ISportsFactory {
+	return &adidasFactory{}
+}
+
 func (a *adidasFactory) makeShoe(logo string, size int) IShoe {
 	return &adidasShoe{
 		Shoe: Shoe{
