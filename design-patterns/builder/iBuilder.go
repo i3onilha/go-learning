@@ -7,12 +7,14 @@ type IBuilder interface {
 	getHouse() House
 }
 
+var builderTypes = map[string]IBuilder{
+	"normal": newNormalBulder(),
+	"igloo":  newIglooBulder(),
+}
+
 func GetBuilder(builderType string) IBuilder {
-	if builderType == "normal" {
-		return newNormalBulder()
-	}
-	if builderType == "igloo" {
-		return newIglooBulder()
+	if builder, ok := builderTypes[builderType]; ok {
+		return builder
 	}
 	return nil
 }
